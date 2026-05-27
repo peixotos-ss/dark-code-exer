@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu de Seleção Personalizado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="select-menu">
+    <div class="select">
+      <span>Selecione o Idioma</span>
+      <i class="fas fa-angle-down"></i>
+    </div>
+    <div class="options-list">
+      <div class="option">Inglês</div>
+      <div class="option">Árabe</div>
+      <div class="option">Híndi</div>
+      <div class="option">Espanhol</div>
+      <div class="option">Francês</div>
+      <div class="option">Japonês</div>
+      <div class="option">Coreano</div>
+    </div>
+  </div>
+
+
+  <script>
+    const select = document.querySelector(".select");
+    const options_list = document.querySelector(".options-list");
+    const options = document.querySelectorAll(".option");
+
+    select.addEventListener("click", () => {
+      options_list.classList.toggle("active");
+      select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+    });
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        options.forEach((option) => {option.classList.remove('selected')});
+        select.querySelector("span").innerHTML = option.innerHTML;
+        option.classList.add("selected");
+        options_list.classList.toggle("active");
+        select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+      });
+    });
+  </script>
+</body>
+</html>
